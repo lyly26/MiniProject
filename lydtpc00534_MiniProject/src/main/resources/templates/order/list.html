@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+	  th:replace="~{/layout/index :: dynamic(~{::main})}"> <!-- đưa thể main của trang checkout vào trang layout -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	crossorigin="anonymous">
+</head>
+<body>
+	
+	<main>
+		<div class="panel panel-primary">
+			<div class="panel-heading">YOUR ORDERS PRUCHASED</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Order No.</th>
+						<th>Order Date</th>
+						<th>Shipping Date</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="order,state : ${orders}" th:object="${order}">
+						<!-- Lấy vị trí phần tử trong tập hợpp -->
+						<td>[[${state.index}]]</td>
+						
+						<td>[[*{id}]]</td>
+						<td>[[*{createDate}]]</td>
+						<td>[[*{address}]]</td>
+						<td><a th:href="@{|/order/detail/*{id}|}" class="btn btn-success"> 
+						<i class="fa fa-search"></i>
+						</a></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</main>
+	
+</body>
+</html>

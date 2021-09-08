@@ -1,0 +1,60 @@
+<div class="panel panel-default">
+	<div class="panel-headin">Product edition</div>
+	<div class="row">
+		<div class="col-sm-5">
+			<div class="img-upload mt-3 text-center ml-3">
+				<img ng-src="{{'/images/'+ form.image}}"
+					style="max-width: 100%; height: 270px;">
+			</div>
+			<hr>
+			<div class="form-group">
+				<input type="file" id="image" name="file"
+					onchange="angular.element(this).scope().imageChanged(this.files)"
+					class="form-control-file mt-2 ml-3" />
+			</div>
+		</div>
+
+		<div class="col-sm-7">
+			<div class="form-group mt-3">
+				<label>Name Product:</label> 
+				<input type="text" ng-model="form.name" class="form-control" placeholder="Tên Sản Phẩm" />
+			</div>
+
+			<div class="form-group">
+				<label>Price:</label> 
+				<input class="form-control" ng-model="form.price" placeholder="Giá sản phẩm" />
+			</div>
+
+			<div class="form-group">
+				<label>CreateDates:</label> 
+				<input type="date" ng-model="form.createDate" class="form-control" />
+			</div>
+
+			<div class="form-group">
+				<label>Category:</label> 
+				<select class="form-control" ng-model="form.category.id">
+					<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label>Avalible: </label>
+				<div class="form-check form-check-inline ml-2">
+					<input type="radio" ng-model="form.available"
+						class="form-check-input" name="available" ng-value="true">Yes
+				</div>
+				<div class="form-check form-check-inline">
+					<input type="radio" ng-model="form.available"
+						class="form-check-input" name="available" ng-value="false">No
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="dieukhien ml-3" style="text-align: center;">
+		<button class="btn btn-success" ng-click="create()">Create</button>
+		<button class="btn btn-success" ng-click="update()">Update</button>
+		<button class="btn btn-success" ng-click="delete(form)">Delete</button>
+		<button class="btn btn-success" ng-click="reset()">Reset</button>
+	</div>	
+</div>

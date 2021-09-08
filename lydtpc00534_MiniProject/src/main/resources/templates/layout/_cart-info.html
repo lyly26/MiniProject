@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<div class="panel panel-primary">
+      <div class="panel-body text-center">
+        <i
+          class="glyphicon glyphicon-shopping-cart"
+          style="font-size: 25px"
+        ></i>
+        <a th:href="@{/cart/view}" style="color: red;">{{cart.count}} items x {{cart.amount | number: 2}}</a
+        >
+      </div>
+    </div>
+	
+</body>
+</html>

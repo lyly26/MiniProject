@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<div class="container mt-3">
+	<h2>Product Tabs</h2>
+	<br>
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a class="nav-link active" data-toggle="tab"
+			href="" data-target="#edit">FORM</a></li>
+		<li class="nav-item"><a class="nav-link" data-toggle="tab"
+			href="" data-target="#list">PRODUCT LIST 1</a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div id="edit" class="container tab-pane active">
+			<div ng-include="'/admin/product/_form.html'"></div>
+		</div>
+		<div id="list" class="container tab-pane fade">
+			<div ng-include="'/admin/product/_table.html'"></div>
+		</div>
+	</div>
+</div>
+

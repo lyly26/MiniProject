@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Header</title>
+</head>
+<body>
+	<header class="header">
+		<!-- Top Bar -->
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col d-flex flex-row">
+						<div class="top_bar_contact_item">
+							<div class="top_bar_icon">
+								<img src="/images/phone.png" alt="">
+							</div>
+							+84 068 005 3570
+						</div>
+						<div class="top_bar_contact_item">
+							<div class="top_bar_icon">
+								<img src="/images/mail.png" alt="">
+							</div>
+							<a
+								href="https://colorlib.com/cdn-cgi/l/email-protection#234542505750424f465063444e424a4f0d404c4e"><span
+								class="__cf_email__"
+								data-cfemail="34525547404755585147745359555d581a575b59">[email&#160;]</span></a>
+						</div>
+						<div class="top_bar_content ml-auto">
+							<div class="top_bar_menu">
+								<ul class="standard_dropdown top_bar_dropdown">
+									<li><a href="#">Việt Nam<i class="fas fa-chevron-down"></i></a>
+										<ul>
+											<li><a href="#">English</a></li>
+										</ul></li>
+									<li><a href="#">VND<i class="fas fa-chevron-down"></i></a>
+										<ul>
+											<li><a href="#">EUR Euro</a></li>
+										</ul></li>
+								</ul>
+							</div>
+							<div class="top_bar_user">
+								<div class="user_icon">
+									<img src="/images/user.svg" alt="">
+								</div>
+								<div>
+									<a href="#">Đăng ký</a>
+								</div>
+								<div>
+									<a th:href="@{/security/login/form}">Đăng nhập</a> |
+								</div>
+								<!-- <div>
+									<a th:href="@{/security/logoff}">Đăng xuất</a>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Main -->
+
+		<div class="header_main">
+			<div class="container">
+				<div class="row">
+
+					<!-- Logo -->
+					<div class="col-lg-2 col-sm-3 col-3 order-1">
+						<div class="logo_container">
+							<div class="logo">
+								<a href="#">OneTech</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Search -->
+					<div
+						class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+						<div class="header_search">
+							<div class="header_search_content">
+								<div class="header_search_form_container">
+									<form action="#" class="header_search_form clearfix">
+										<input type="search" required="required"
+											class="header_search_input"
+											placeholder="Tìm kiếm sản phẩm...">
+										<!-- <div class="custom_dropdown"> -->
+											<div class="custom_dropdown_list">
+												<span class="custom_dropdown_placeholder clc"></span> <!-- <i class="fas fa-chevron-down"></i> -->
+												<ul class="custom_list clc">
+
+													<li><a th:each="c:${cates}"
+														class="dropdown-item list-group-item clc"
+														th:href="@{|/product/list/?cid=${c.id}|}"> <i
+															class="fa fa-th-large"></i> [[${c.name}]]
+													</a></li>
+												</ul>
+											</div>
+										<!-- </div> -->
+										<button type="submit" class="header_search_button trans_300"
+											value="Submit">
+											<img src="images/search.png" alt="">
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Wishlist -->
+					<div
+						class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+						<div
+							class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+							<div
+								class="wishlist d-flex flex-row align-items-center justify-content-end">
+								<div class="wishlist_icon">
+									<img src="images/heart.png" alt="">
+								</div>
+								<div class="wishlist_content">
+									<div class="wishlist_text">
+										<a href="#"> Danh sách yêu thích</a>
+									</div>
+									<div class="wishlist_count">115</div>
+								</div>
+							</div>
+
+							<!-- Cart -->
+							<div class="cart">
+								<div
+									class="cart_container d-flex flex-row align-items-center justify-content-end">
+									<div class="cart_icon">
+										<a th:href="@{/cart/view}"><img src="/images/cart.png">
+											<div class="cart_count">
+												<span>{{cart.count}}</span>
+											</div></a>
+									</div>
+									<div class="cart_content">
+										<div class="cart_text">
+											<a th:href="@{/cart/view}"> Giỏ hàng</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="main_nav_content">
+							<div class="main_nav_menu ml-auto">
+								<ul class="standard_dropdown main_nav_dropdown">
+
+									<th:block th:if="${#request.remoteUser}">
+
+										<li><a th:href="@{/}"> Trang chủ <i
+												class="fas fa-chevron-down"></i></a></li>
+										<li class="hassubs"><a th:href="@{/home/about}"> Giới
+												thiệu </a>
+										<li class="hassubs"><a th:href="@{/}"> Sản Phẩm</a></li>
+										<li><a th:href="@{/order/list}">Your order</a></li>
+
+										<li
+											th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('PM')}"><a
+											th:href="@{/admin/home/index}">Administrator</a></li>
+										<li><a th:href="@{/security/logoff}">Đăng xuất</a></li>
+									</th:block>
+									<th:block th:unless="${#request.remoteUser}">
+										<li><a th:href="@{/}"> Trang chủ <i
+												class="fas fa-chevron-down"></i></a></li>
+
+										<li class="hassubs"><a th:href="@{/home/about}"> Giới
+												thiệu </a>
+										<li class="hassubs"><a th:href="@{/}"> Sản Phẩm</a></li>
+									</th:block>
+									<li><a href="#" style="color: red; margin-left: 130px;">Welcome
+											[[${#request.remoteUser}]]</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- Menu -->
+	</header>
+</body>
+</html>

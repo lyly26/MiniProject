@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+	th:replace="~{/layout/index :: dynamic(~{::main})}">
+<!-- đưa thể main của trang checkout vào trang layout -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<main th:object="${order}">
+		<div class="container">
+			<div class="panel panel-primary" >
+				<div class="panel-heading">ORDER INFORMATION</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<label for="usr">Order Number:</label> 
+							<input th:field="*{id}" readonly="readonly" /> <!-- Hiển thị id -->
+						</div>
+						<div class="form-group col-sm-4">
+							<label for="usr">Purchase:</label> 
+							<input th:field="*{account.username}" readonly="readonly" /> <!-- Hiển thị tên người đặt -->
+						</div>
+						<div class="form-group col-sm-4">
+							<label for="usr">Purchase Date:</label> 
+							<input th:field="*{createDate}" readonly="readonly" /> <!-- Hiển thị ngày đặt hàng -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-12">
+							<div>Shipping Address</div>
+							<textarea th:field="*{address}" class="form-control"></textarea> <!-- Hiển thị địa chỉ -->
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Chi tiết các mặt hàng tròng đơn hàng -->
+			<div class="panel panel-primary">
+				<div class="panel-heading">ORDER LINES</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr th:each="detail : *{orderDetails}" th:object="${detail}">
+							<td>[[*{product.id}]]</td>
+							<td>[[*{product.name}]]</td>
+							<td>$[[*{#numbers.formatDecimal(price,0, 'COMMA', 2,
+								'POINT')}]]</td>
+							<td>[[*{quantity}]]</td>
+							<td>$[[*{#numbers.formatDecimal(price*quantity,0, 'COMMA',
+								2, 'POINT')}]]</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>

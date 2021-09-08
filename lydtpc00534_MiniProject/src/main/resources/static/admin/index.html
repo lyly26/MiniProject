@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:fragment="dynamic(main)">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java 6 Store Administation</title>
+<!-- jQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- AngularJS ROUTE-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<!-- AngularJS Route-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<!-- font-awesome -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	crossorigin="anonymous">
+</head>
+
+<body class="container" ng-app="admin-app">
+	<header class="row">
+		<h2 class="alert alert-success">Website Administation</h2>
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link"
+					href="#!account">Account</a></li> 
+				<li class="nav-item active"><a class="nav-link"
+					href="#!product">Product <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active"><a class="nav-link"
+					href="#!category">Category</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="#!authorize">Authorizing</a></li>
+				<!-- <li class="nav-item active"><a class="nav-link"
+					href="#!statistical">Statistical</a></li> -->			 
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<a class="btn btn-outline-success my-2 my-sm-0"
+					href="/security/logoff">Sign Out</a>
+			</form>
+		</div>
+	</nav>
+	
+	<main>
+		<p class="ng-view" />
+	</main>
+	<footer class="bg-light text-center text-lg-start">
+		<!-- Copyright -->
+		<div class="text-center p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2020 Copyright: <a class="text-dark"
+				href="https://mdbootstrap.com/">MDBootstrap.com</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<script src="/admin/admin-app.js"></script>
+	<script src="/admin/authority/authority-ctrl.js"></script>
+	<script src="/admin/product/product-ctrl.js"></script>
+	<script src="/admin/category/category-ctrl.js"></script>
+	 <script src="/admin/account/account-ctrl.js"></script> 
+</body>
+
+</html>

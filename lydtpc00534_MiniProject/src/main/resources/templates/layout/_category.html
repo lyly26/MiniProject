@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<b class="glyphicon glyphicon-briefcase"> DANH MỤC </b>
+		</div>
+		<div class="list-group">
+			<!-- Duyệt qua cates bên trong  requeset -->
+			<a th:each="c : ${cates}" th:href="@{|/product/list?cid=${c.id}|}"
+				class="list-group-item">[[${c.name}]]</a>   <!-- hiển thị tên của loại -->
+		</div>
+	</div>
+	
+</body>
+</html>
